@@ -7,7 +7,7 @@ const configuration = new Configuration({
 });
 
 const openai = new OpenAIApi(configuration);
-
+//从服务器发送到前端网页
 export async function POST(req: Request) {
   try {
     const { userId } = auth();

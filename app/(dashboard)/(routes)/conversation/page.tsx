@@ -20,9 +20,11 @@ import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { Loader } from "@/components/ui/loader";
+import { useProModal } from "@/hooks/use-pro-modal";
 
 const ConversationPage = () => {
   const router = useRouter();
+  const proModal = useProModal();
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -44,7 +46,9 @@ const ConversationPage = () => {
       setMessages((current) => [...current, response.data, userMessage]);
       form.reset();
     } catch (error: any) {
-      console.log(error);
+     if (error?.response?.status === 403) {
+        proModal.onOpen();
+      } 
     } finally {
       router.refresh();
     }

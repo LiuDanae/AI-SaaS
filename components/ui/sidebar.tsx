@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import FreeCounter from "./free-counter";
+
 const routes = [
   {
     label: "Dashboard",
@@ -24,6 +26,12 @@ const routes = [
     icon: MessageSquare,
     href: "/conversation",
     color: "text-violet-500",
+  },
+   {
+    label: "Code Generation",
+    icon: Code,
+    color: "text-green-700",
+    href: "/code",
   },
   {
     label: "Image Generation",
@@ -43,20 +51,15 @@ const routes = [
     color: "text-emerald-500",
     href: "/music",
   },
-  {
-    label: "Code Generation",
-    icon: Code,
-    color: "text-green-700",
-    href: "/code",
-  },
+ 
   {
     label: "Settings",
     icon: Settings,
     href: "/settings",
   },
 ];
-
-const Sidebar = () => {
+ 
+const Sidebar = ({apiLimitCount=0}:{apiLimitCount:number}) => {
   const pathname = usePathname();
   return (
     <div className="space-y-4 py-4 flex flex-col h-full bg-[#111827] text-white">
@@ -87,6 +90,7 @@ const Sidebar = () => {
           ))}
         </div>
       </div>
+      <FreeCounter apiLimitCount={apiLimitCount}/>
     </div>
   );
 };

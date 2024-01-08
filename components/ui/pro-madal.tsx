@@ -1,8 +1,9 @@
 "use client";
 
-//import axios from "axios";
-//import { useState } from "react";
+import axios from "axios";
+import { useState } from "react";
 import { Check, Zap } from "lucide-react";
+import { toast } from "react-hot-toast";
 
 import { 
   Dialog, 
@@ -21,7 +22,7 @@ import { cn } from "@/lib/utils";
 
 export const ProModal = () => {
   const proModal = useProModal();
-  /*const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onSubscribe = async () => {
     try {
@@ -30,11 +31,11 @@ export const ProModal = () => {
 
       window.location.href = response.data.url;
     } catch (error) {
-     console.log("Something went wrong");
+     toast.error("Something went wrong");
     } finally {
       setLoading(false);
     }
-  }*/
+  }
 
   return (
     <Dialog open={proModal.isOpen} onOpenChange={proModal.onClose}>
@@ -65,7 +66,7 @@ export const ProModal = () => {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button  size="lg" variant="premium" className="w-full">
+          <Button disabled={loading} onClick={onSubscribe} size="lg" variant="premium" className="w-full">
             Upgrade
             <Zap className="w-4 h-4 ml-2 fill-white" />
           </Button>

@@ -30,11 +30,10 @@ export async function POST(req: Request) {
       return new NextResponse("Codes are required", { status: 400 });
     }
     const freeTrial = await checkApiLimit();
-
-    if (!freeTrial) {
-      return new NextResponse("Free trial has expired. Please upgrade to pro", {
-        status: 403,
-      });
+    const isPro=await checkApiLimit()
+   
+    if(!freeTrial&&isPro){
+      return new NextResponse("Free trial has expired. Please upgrade to pro",{status:403})
     }
     const response = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",

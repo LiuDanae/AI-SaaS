@@ -27,11 +27,11 @@ export async function POST(req: Request) {
     const subscription = await stripe.subscriptions.retrieve(
       session.subscription as string
     )
-
+    console.log("ok1")
     if (!session?.metadata?.userId) {
       return new NextResponse("User id is required", { status: 400 });
     }
-
+    console.log("ok2")
     await prismadb.userSubscription.create({
       data: {
         userId: session?.metadata?.userId,
@@ -44,7 +44,7 @@ export async function POST(req: Request) {
       },
     })
   }
-
+  console.log("ok3")
   if (event.type === "invoice.payment_succeeded") {
     const subscription = await stripe.subscriptions.retrieve(
       session.subscription as string

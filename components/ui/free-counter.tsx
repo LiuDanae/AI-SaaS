@@ -6,17 +6,22 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { useProModal } from "@/hooks/use-pro-modal";
+import { RedirectUrl } from "@clerk/nextjs/server";
 
 interface FreeCounterProps {
   apiLimitCount: number;
+  isPro:boolean;
 }
-export default function FreeCounter({ apiLimitCount = 0 }: FreeCounterProps) {
+export default function FreeCounter({ apiLimitCount = 0,isPro=false }: FreeCounterProps) {
   const [mounted, setMounted] = useState(false);
   const proModal = useProModal();
   useEffect(() => {
     setMounted(true);
   }, []);
   if (!mounted) {
+    return null;
+  }
+  if(isPro){
     return null;
   }
   return (

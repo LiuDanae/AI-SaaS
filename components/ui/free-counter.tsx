@@ -6,7 +6,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { useProModal } from "@/hooks/use-pro-modal";
-import { RedirectUrl } from "@clerk/nextjs/server";
 
 interface FreeCounterProps {
   apiLimitCount: number;

@@ -1,7 +1,7 @@
-import Navbar from "@/components/ui/navbar";
-import Sidebar from "@/components/ui/sidebar";
+import Navbar from "@/components/navbar";
+import Sidebar from "@/components/sidebar";
 import { getApiLimitCount } from "@/lib/api-limit";
-import { ModalProvider } from "@/components/ui/modal-provider";
+import { ModalProvider } from "@/components/modal-provider";
 import { checkSubscription } from "@/lib/subscription";
 
 const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {

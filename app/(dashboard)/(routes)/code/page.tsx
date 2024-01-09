@@ -1,7 +1,7 @@
 "use client";
 import * as z from "zod";
 import axios from "axios";
-import { Heading } from "@/components/ui/heading";
+import { Heading } from "@/components/heading";
 import { Code } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -15,12 +15,12 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Empty } from "@/components/ui/empty";
 
-import { UserAvatar } from "@/components/ui/user-avatar";
-import { BotAvatar } from "@/components/ui/bot-avatar";
+import { UserAvatar } from "@/components/user-avatar";
+import { BotAvatar } from "@/components/bot-avatar";
 import { useState } from "react";
 
 import { cn } from "@/lib/utils";
-import { Loader } from "@/components/ui/loader";
+import { Loader } from "@/components/loader";
 
 const CodePage = () => {
   const router = useRouter();
